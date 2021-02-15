@@ -1,0 +1,6 @@
+[submodule "qemu"]
+	path = qemu
+	url = https://github.com/qemu/qemu.git
+[submodule "soc_term"]
+	path = soc_term
+	url = https://github.com/linaro-swg/soc_term.git
