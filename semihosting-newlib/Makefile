@@ -2,7 +2,7 @@ CC:=arm-none-eabi-gcc
 CFLAGS:=-g -mcpu=cortex-a7
 LDFLAGS:=-T main.ld --specs=nano.specs --specs=rdimon.specs
 OBJCOPY:=arm-none-eabi-objcopy
-QEMU:=qemu-system-arm
+QEMU:=../qemu/build/qemu-system-arm
 TMUX:=tmux
 TMUX_SESSION:=qemu
 TMUX_MAIN_WINDOW:=qemu-main
@@ -31,7 +31,6 @@ run: main.bin soc_term
 				-cpu cortex-a7 \
 				-d unimp \
 				-semihosting-config enable=on,target=native \
-				-m 1057 \
 				-bios main.bin" \
 			ENTER \; \
 		send-keys -t .right \
@@ -40,10 +39,6 @@ run: main.bin soc_term
 			"symbol-file main.elf" \
 			ENTER \
 			"layout asm" \
-			ENTER \
-			"b Reset_Handler" \
-			ENTER \
-			"b _start" \
 			ENTER \
 			"b main" \
 			ENTER \
