@@ -16,7 +16,7 @@ soc_term:
 run: main.bin soc_term
 	$(TMUX) \
 		new-session -d -s $(TMUX_SESSION) -n $(TMUX_MAIN_WINDOW) sh \; \
-		split-window -h arm-none-eabi-gdb -q \; \
+		split-window -h arm-none-eabi-gdb -q main.elf \; \
 		new-window -n $(TMUX_TERM_WINDOW) ../soc_term/soc_term 54320 \; \
 		split-window -h -d ../soc_term/soc_term 54321 \; \
 		select-window -t $(TMUX_MAIN_WINDOW) \; \
@@ -36,13 +36,7 @@ run: main.bin soc_term
 		send-keys -t .right \
 			"target remote :1234" \
 			ENTER \
-			"symbol-file main.elf" \
-			ENTER \
 			"layout asm" \
-			ENTER \
-			"b main" \
-			ENTER \
-			"c" \
 			ENTER \; \
 		attach
 
