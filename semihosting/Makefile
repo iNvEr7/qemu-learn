@@ -16,7 +16,7 @@ soc_term:
 run: main.bin soc_term
 	$(TMUX) \
 		new-session -d -s $(TMUX_SESSION) -n $(TMUX_MAIN_WINDOW) sh \; \
-		split-window -h -d arm-none-eabi-gdb \; \
+		split-window -h arm-none-eabi-gdb -q \; \
 		new-window -n $(TMUX_TERM_WINDOW) ../soc_term/soc_term 54320 \; \
 		split-window -h -d ../soc_term/soc_term 54321 \; \
 		select-window -t $(TMUX_MAIN_WINDOW) \; \
@@ -43,6 +43,7 @@ run: main.bin soc_term
 			ENTER \
 			"b main" \
 			ENTER \
+			C-x o \
 			"c" \
 			ENTER \; \
 		attach
@@ -50,7 +51,7 @@ run: main.bin soc_term
 main.bin: main.elf
 	$(OBJCOPY) -O binary $< $@
 
-main.elf: start.o main.o
+main.elf: main.o start.o
 	$(CC) $(LDFLAGS) $(LOADLIBES) $(LDLIBS) $^ -o $@
 
 clean:
