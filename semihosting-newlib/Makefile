@@ -30,7 +30,7 @@ run: main.bin soc_term
 				-machine virt \
 				-cpu cortex-a7 \
 				-d unimp \
-				-semihosting-config enable=on,target=native \
+				-semihosting-config enable=on,target=native,arg=yes,arg=you,arg=can,arg=even,arg=pass,arg=arguments \
 				-bios main.bin" \
 			ENTER \; \
 		send-keys -t .right \
