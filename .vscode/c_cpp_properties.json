@@ -3,7 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/qemu/**",
+                "${workspaceFolder}/semihosting/**",
+                "${workspaceFolder}/semihosting-newlib/**",
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-10",
