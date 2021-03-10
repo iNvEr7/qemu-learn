@@ -6,6 +6,7 @@
                 "${workspaceFolder}/qemu/**",
                 "${workspaceFolder}/semihosting/**",
                 "${workspaceFolder}/semihosting-newlib/**",
+                "${workspaceFolder}/armv7-el-modes/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-10",
